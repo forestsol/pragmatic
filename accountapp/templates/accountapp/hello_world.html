@@ -1,9 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div style="height: 20rem; background-color: #38df81; border-radius: 1rem; margin: 2rem;">
-        <h1>
-            testing
+    <div style="border-radius: 1rem; margin: 2rem; text-align: center">
+        <h1 style="font-family: 'lobster', cursive;">
+            Hello World LIST!
         </h1>
+        <form action ="/account/hello_world/" method = "post">
+            {% csrf_token %}
+            <div>
+                <input type = "text" name = "hello_world_input">
+            </div>
+            <div>
+                <input type = "submit" class = "btn btn-primary" value = "POST">
+            </div>
+            <!-- 부트스트랩 적용해서 css 안 만들고 간단하게 버튼 모양 적용-->
+        </form>
+
+        {% if hello_world_output %}
+        <h1>
+            {{ hello_world_output.text }}
+            <!--객체 내부에 들어있는 text를 꺼내서 씀.-->
+        </h1>
+        {% endif %}
     </div>
 {% endblock %}
