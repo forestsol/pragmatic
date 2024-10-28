@@ -16,11 +16,16 @@
             <!-- 부트스트랩 적용해서 css 안 만들고 간단하게 버튼 모양 적용-->
         </form>
 
-        {% if hello_world_output %}
-        <h1>
-            {{ hello_world_output.text }}
-            <!--객체 내부에 들어있는 text를 꺼내서 씀.-->
-        </h1>
+        {% if hello_world_list %}
+        <!--hello_world_list에는 객체 여러개 들어있음. for문으로 꺼내주기-->
+            {% for hello_world in hello_world_list %}
+            <h4>
+                {{ hello_world.text }}
+                <!--객체 내부에 들어있는 text를 꺼내서 씀.-->
+            </h4>
+            {% endfor %}
+
+
         {% endif %}
     </div>
 {% endblock %}
