@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div style="text-align: center">
+    <form action="{% url 'accountapp:create' %}" method = "post"> <!-- account/블라블라 이런식으로 경로지정이 아니라 앱명:기능이름 이런식으로 -->
+      {% csrf_token %} <!-- post를 사용하기위해선 csrf를 꼭 넣어야함  -->
+      {{ form }} <!-- account:create에 지정해둔 form을 여기서 사용 -->
+      <input type="submit" class="btn btn-primary">
+    </form>
+  </div>
+
+{% endblock %}
