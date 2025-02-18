@@ -1,3 +1,4 @@
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
 from accountapp.views import hello_world, AccountCreateView
@@ -9,5 +10,10 @@ app_name = "accountapp"
 
 urlpatterns = [
     path('hello_world/', hello_world, name='hello_world'),
+
+    # login과 logout은 views.py에서 상속받을 필요도 없이 바로 여기서 연결하면 됨.
+    path('login/', LoginView.as_view(template_name='accountapp/login.html'), name='login'), # 로그인은 템플릿 지정해줘야함
+    path('logout/', LogoutView.as_view(), name='logout'),
+
     path('create/', AccountCreateView.as_view(), name='create'),
 ]
