@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -34,3 +34,9 @@ class AccountCreateView(CreateView):
     success_url = reverse_lazy('accountapp:hello_world') #reverse()와 같은 역할.
     template_name = 'accountapp/create.html' # 로그인 할 때 보일 화면
     # 함수형 뷰로 회원가입 만들면 훨신 복잡. 클래스뷰로 파라미터 넣어서 이렇게 하면 매우 간단.
+
+
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
