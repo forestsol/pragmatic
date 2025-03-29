@@ -7,7 +7,7 @@
         Quit
       </h4>
     </div>
-    <form action="{% url 'accountapp:delete' pk=user.pk%}" method = "post"> <!-- account/블라블라 이런식으로 경로지정이 아니라 앱명:기능이름 이런식으로 -->
+    <form action="{% url 'accountapp:delete' pk=target_user.pk%}" method = "post"> <!-- account/블라블라 이런식으로 경로지정이 아니라 앱명:기능이름 이런식으로 -->
       {% csrf_token %} <!-- post를 사용하기위해선 csrf를 꼭 넣어야함  -->
       <input type="submit" class="btn btn-danger rounded-pill col-6 mt-3">
     </form>
